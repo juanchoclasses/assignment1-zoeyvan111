@@ -1,4 +1,3 @@
-
 export const ErrorMessages = {
   partial: "#ERR",
   divideByZero: "#DIV/0!",
@@ -8,8 +7,7 @@ export const ErrorMessages = {
   invalidOperator: "#ERR",
   missingParentheses: "#ERR",
   emptyFormula: "#EMPTY!", // this is not an error message but we use it to indicate that the cell is empty
-
-}
+};
 
 export const ButtonNames = {
   edit_toggle: "edit-toggle",
@@ -17,8 +15,7 @@ export const ButtonNames = {
   done: "=",
   allClear: "AC",
   clear: "C",
-}
-
+};
 
 export interface CellTransport {
   formula: string[];
@@ -38,4 +35,3 @@ export interface DocumentTransport {
   currentCell: string;
   isEditing: boolean;
 }
-

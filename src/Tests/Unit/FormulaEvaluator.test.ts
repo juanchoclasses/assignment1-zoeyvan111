@@ -13,15 +13,12 @@ import SheetMemory from "../../Engine/SheetMemory";
 import Cell from "../../Engine/Cell";
 import { ErrorMessages } from "../../Engine/GlobalDefinitions";
 
-
 let testMemory: SheetMemory;
 let recalc: FormulaEvaluator;
-
 
 beforeEach(() => {
   testMemory = new SheetMemory(5, 5);
   recalc = new FormulaEvaluator(testMemory);
-
 
   const cellA1 = new Cell();
   cellA1.setFormula(["1"]);
@@ -52,7 +49,7 @@ describe("FormulaEvaluator", () => {
         const formula: FormulaType = ["1"];
         const memory = new SheetMemory(5, 5);
 
-        recalc.evaluate(formula)
+        recalc.evaluate(formula);
         let result = recalc.result;
         let error = recalc.error;
 
@@ -73,7 +70,6 @@ describe("FormulaEvaluator", () => {
         expect(error).toEqual("");
       });
     });
-
 
     describe("when the formula contains two tokens, number, operator", () => {
       it("returns the number", () => {
@@ -112,12 +108,10 @@ describe("FormulaEvaluator", () => {
           let result = recalc.result;
           let error = recalc.error;
 
-          expect(result).toEqual(3);
+          expect(result).toEqual(-1);
           expect(error).toEqual("");
         });
       });
-
-
 
       describe("when the operator is *", () => {
         it("returns the product of the numbers", () => {
@@ -128,11 +122,10 @@ describe("FormulaEvaluator", () => {
           let result = recalc.result;
           let error = recalc.error;
 
-          expect(result).toEqual(3);
+          expect(result).toEqual(2);
           expect(error).toEqual("");
         });
       });
-
 
       describe("when the operator is /", () => {
         describe("when the divisor is not zero", () => {
@@ -186,7 +179,6 @@ describe("FormulaEvaluator", () => {
         let result = recalc.result;
         let error = recalc.error;
 
-
         expect(result).toEqual(8);
         expect(error).toEqual(ErrorMessages.invalidFormula);
       });
@@ -229,14 +221,11 @@ describe("FormulaEvaluator", () => {
 
           expect(result).toEqual(7);
           expect(error).toEqual("");
-
         });
       });
 
-
       describe("when the operators are +, /", () => {
         it("returns the quotient of the second and third number added to the first number", () => {
-
           const formula: FormulaType = ["1", "+", "10", "/", "5"];
           recalc.evaluate(formula);
 
@@ -245,7 +234,6 @@ describe("FormulaEvaluator", () => {
 
           expect(result).toEqual(3);
           expect(error).toEqual("");
-
         });
       });
     });
@@ -260,12 +248,9 @@ describe("FormulaEvaluator", () => {
 
         expect(result).toEqual(3);
         expect(error).toEqual(ErrorMessages.invalidFormula);
-      }
-      );
-    }
-    );
+      });
+    });
     describe("when the formula A1 + A1", () => {
-
       it("returns the number", () => {
         const formula = ["A1", "+", "A1"];
 
@@ -289,15 +274,11 @@ describe("FormulaEvaluator", () => {
 
         expect(result).toEqual(3);
         expect(error).toEqual("");
-
       });
     });
 
     describe("when the formula A1 + A2 + 50", () => {
-
       it("returns the number", () => {
-
-
         const formula = ["A1", "+", "A2", "+", "50"];
 
         recalc.evaluate(formula);
@@ -323,6 +304,5 @@ describe("FormulaEvaluator", () => {
         expect(error).toEqual(ErrorMessages.invalidFormula);
       });
     });
-
   });
 });
